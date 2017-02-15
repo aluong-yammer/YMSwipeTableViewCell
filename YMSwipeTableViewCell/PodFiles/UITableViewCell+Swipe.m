@@ -301,8 +301,8 @@ static const void *YKTableSwipeContainerViewBackgroundColorKey = &YKTableSwipeCo
     CGPoint translation = [recognizer translationInView:recognizer.view];
 
     void (^initializeGestureRecognizerBeginningState)(void) = ^{
-        self.contentView.clipsToBounds = YES;
-        [self.contentView addSubview:self.swipeContainerView];
+        self.clipsToBounds = YES;
+        [self addSubview:self.swipeContainerView];
         self.swipeContainerView.layer.transform = CATransform3DIdentity;
         self.swipeContainerView.frame = self.bounds;
         [self.leftView removeFromSuperview];
@@ -328,7 +328,7 @@ static const void *YKTableSwipeContainerViewBackgroundColorKey = &YKTableSwipeCo
                 [self.swipeContainerView addSubview:self.leftView];
             }
         }
-        UIView *snapshotView = [self.contentView snapshotViewAfterScreenUpdates:NO];
+        UIView *snapshotView = [self snapshotViewAfterScreenUpdates:NO];
         [self setSwipeView:snapshotView];
         snapshotView.backgroundColor = self.backgroundColor;
         [self.swipeContainerView addSubview:self.swipeView];
